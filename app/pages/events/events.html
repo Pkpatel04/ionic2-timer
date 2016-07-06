@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar *navbar>
+    <ion-title>Timers</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="events">
+  <ion-row>
+    <ion-col width-50 offset-25>
+      <button (click)="openSettings()" light round block>New Timer</button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let event of events">
+    <ion-col>
+      <ion-card (click)="openSettings(event)">
+        <ion-card-header>
+          {{ event.title }}
+        </ion-card-header>
+        <ion-card-content>
+          {{ event.description }}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
