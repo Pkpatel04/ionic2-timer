@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{ event.title }}
+      {{ timer.title }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,14 +9,14 @@
 <ion-content padding class="settings">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Title" [(ngModel)]="event.title"></ion-input>
+      <ion-input placeholder="Title" [(ngModel)]="timer.title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Description" [(ngModel)]="event.description"></ion-input>
+      <ion-input placeholder="Description" [(ngModel)]="timer.description"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Event Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [(ngModel)]="event.timeEnds"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [(ngModel)]="timer.timeEnds"></ion-datetime>
     </ion-item>
   </ion-list>
 </ion-content>

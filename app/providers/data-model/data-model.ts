@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../../interfaces/event';
+import { Timer } from '../../interfaces/timer';
 import * as moment from 'moment';
 
 @Injectable()
 export class DataModel {
 
-  public defaultEvent : Event = {
+  public defaultTimer : Timer = {
     id: -1,
     title: 'Title',
     description: '',
@@ -15,10 +15,10 @@ export class DataModel {
 
   constructor() {}
 
-  getDefaultEvent() : Event {
-    let event : Event = <any>{};
-    Object.assign(event, this.defaultEvent);
-    return event;
+  getDefaultTimer() : Timer {
+    let timer : Timer = <any>{};
+    Object.assign(timer, this.defaultTimer);
+    return timer;
   }
 
 }
