@@ -8,7 +8,7 @@ import { Timer } from '../../interfaces/timer';
 })
 export class SettingsPage {
 
-  public timer : Event;
+  public timer : Timer;
 
   public globals : {};
 
@@ -28,5 +28,10 @@ export class SettingsPage {
   closeSettings(save : boolean = false) {
     let timer = save ? this.timer : undefined;
     this.viewController.dismiss(timer);
+  }
+
+  removeTimer() {
+    let success = this.dataModel.removeTimer(this.timer.id);
+    success && this.closeSettings();
   }
 }

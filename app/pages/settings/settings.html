@@ -9,16 +9,19 @@
 <ion-content padding class="settings">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Title" [(ngModel)]="timer.title"></ion-input>
+      <ion-label stacked>Title</ion-label>
+      <ion-input [(ngModel)]="timer.title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Description" [(ngModel)]="timer.description"></ion-input>
+      <ion-label stacked>Description</ion-label>
+      <ion-input [(ngModel)]="timer.description"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Event Date</ion-label>
+      <ion-label stacked>Date</ion-label>
       <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [min]="globals.minDate" [max]="globals.maxDate" [(ngModel)]="timer.endDate"></ion-datetime>
     </ion-item>
   </ion-list>
+  <button danger (click)="removeTimer()">Delete</button>
 </ion-content>
 
 <ion-footer>

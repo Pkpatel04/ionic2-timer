@@ -7,10 +7,10 @@ export class DataModel {
 
   private defaultTimer : Timer = {
     id: -1,
-    title: 'Title',
+    title: 'Timer',
     description: '',
-    startDate: moment().format(), // maintains local time zone
-    endDate: moment().format()    // maintains local time zone
+    startDate: moment(),
+    endDate: moment()
   };
 
   private timers : Timer[] = [];
@@ -31,6 +31,9 @@ export class DataModel {
 
     // pseudo-random id
     timer.id = Math.floor(Math.random() * 1000000);
+    // now
+    timer.startDate = moment().format();
+    timer.endDate = moment().format();
 
     return timer;
   }
@@ -51,6 +54,22 @@ export class DataModel {
   replaceTimer(index : number, timer : Timer) : boolean {
     let success = this.timers.splice(index, 1, timer);
     return success.length > 0 ? true : false;
+  }
+
+  /**
+  *   Remove the timer with the given timerId.
+  *   @param timerId
+  **/
+  removeTimer(timerId : number) {
+    let success = false;
+    let index = this.timers.findIndex((t) => t.id === timerId);
+
+    if (index > -1) {
+      success = true;
+      this.timers.splice(index, 1);
+    }
+
+    return success;
   }
 
   /**
