@@ -16,7 +16,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Event Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [(ngModel)]="timer.timeEnds"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [min]="globals.minDate" [max]="globals.maxDate" [(ngModel)]="timer.endDate"></ion-datetime>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -10,29 +10,34 @@ import * as moment from 'moment';
 })
 export class TimersPage {
 
-  public timers : Timer[] = [
-    {id: 0, title: 'Leave for Europe', description: '', startDate: moment(), endDate: moment()},
-    {id: 5, title: 'Going away party', description: '', startDate: moment(), endDate: moment()}
-  ];
+  public timers : Timer[] = [];
 
-  constructor(private nav: NavController, private dataModel: DataModel) {}
+  constructor(private nav: NavController, private dataModel: DataModel) {
+    this.timers = this.dataModel.getTimers();
+  }
 
+  /**
+  *   @param timer: the timer to edit. By default it is a timer stub with a unique id.
+  **/
   openSettings(timer: Timer = this.dataModel.getDefaultTimer()) {
     let timerCopy = Object.assign({}, timer);
     let modal = Modal.create(SettingsPage, {timer: timerCopy});
+
     modal.onDismiss((timer : Timer) => {
       // data returned from Modal (i.e. not cancelled)
       if (timer) {
         let index = this.timers.findIndex((t) => t.id === timer.id);
+        // existing event, so update
         if (index > -1) {
-          this.timers.splice(index, 1, timer);
+          this.dataModel.replaceTimer(index, timer);
         }
+        // doesn't exist, so add to list
         else {
-          this.timers.push(timer);
+          this.dataModel.pushTimer(timer);
         }
       }
-      else {}
     });
+
     this.nav.present(modal);
   }
 }

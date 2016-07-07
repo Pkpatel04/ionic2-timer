@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
+import {StatusBar, Splashscreen} from 'ionic-native';
 import {TimersPage} from './pages/timers/timers';
 import {DataModel} from './providers/data-model/data-model';
 
@@ -16,6 +16,7 @@ export class MyApp {
 
     platform.ready().then(() => {
       StatusBar.styleDefault();
+      Splashscreen.hide();
     });
   }
 }

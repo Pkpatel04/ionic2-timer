@@ -10,14 +10,21 @@ export class SettingsPage {
 
   public timer : Event;
 
+  public globals : {};
+
   constructor(
     private viewController: ViewController,
-    private navParams: NavParams,
-    private dataModel: DataModel
+    private dataModel: DataModel,
+    private navParams: NavParams
   ) {
-    this.timer = this.navParams.get('timer') || this.dataModel.getDefaultTimer();
+    this.timer = this.navParams.get('timer');
+    this.globals = this.dataModel.getGlobals();
   }
 
+  /**
+  *   Close the modal, either with the data just edited or empty.
+  *   @param save:  Have we clicked Cancel (false) or OK (true)?
+  **/
   closeSettings(save : boolean = false) {
     let timer = save ? this.timer : undefined;
     this.viewController.dismiss(timer);
