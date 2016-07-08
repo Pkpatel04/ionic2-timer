@@ -18,7 +18,7 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [min]="globals.minDate" [max]="globals.maxDate" [(ngModel)]="timer.endDate"></ion-datetime>
+      <ion-datetime displayFormat="MMM DD YYYY, HH:mm" [min]="globals.minDate" [max]="globals.maxDate" [(ngModel)]="timer.datetime"></ion-datetime>
     </ion-item>
   </ion-list>
   <button danger (click)="removeTimer()">Delete</button>
@@ -30,7 +30,7 @@
       <button (click)="closeSettings()">Cancel</button>
     </ion-buttons>
     <ion-buttons end>
-      <button (click)="closeSettings(true)">OK</button>
+      <button (click)="closeSettings(true)">Save</button>
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

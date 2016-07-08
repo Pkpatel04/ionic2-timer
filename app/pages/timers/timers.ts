@@ -35,6 +35,7 @@ export class TimersPage {
         else {
           this.dataModel.pushTimer(timer);
         }
+        this.dataModel.startCountdown(timer);
       }
     });
 

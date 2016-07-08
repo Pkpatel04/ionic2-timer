@@ -15,10 +15,12 @@
       <ion-card (click)="openSettings(timer)">
         <ion-card-header>
           {{ timer.title }}
+          {{ timer.description }}
         </ion-card-header>
         <ion-card-content>
-          {{ timer.description }}
-          {{ timer.endDate }}
+          <ion-col width-25 *ngFor="let element of timer.countdown">
+            {{ element.amount }} {{ element.unit }}
+          </ion-col>
         </ion-card-content>
       </ion-card>
     </ion-col>
