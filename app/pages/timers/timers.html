@@ -18,8 +18,8 @@
           {{ timer.description }}
         </ion-card-header>
         <ion-card-content>
-          <ion-col width-25 *ngFor="let element of timer.countdown">
-            {{ element.amount }} {{ element.unit }}
+          <ion-col width-25>
+            {{ timer.countdown.years }}
           </ion-col>
         </ion-card-content>
       </ion-card>

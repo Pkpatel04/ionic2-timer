@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { DataModel } from '../../providers/data-model/data-model';
-import { Timer } from '../../interfaces/timer';
+import { Timer } from '../../types/timer';
 
 @Component({
   templateUrl: 'build/pages/settings/settings.html',

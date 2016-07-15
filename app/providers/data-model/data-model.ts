@@ -1,27 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Timer, CountdownObj } from '../../interfaces/timer';
+import { Timer, Countdown } from '../../types/timer';
 import * as moment from 'moment';
 
 @Injectable()
 export class DataModel {
 
-  private defaultTimer : Timer = {
-    id: -1,
-    title: 'Timer',
-    description: '',
-    datetime: moment()
-  };
-
-  private defaultCountdownObjArr : CountdownObj[] = [
-    {unit: 'years', amount: 0},
-    {unit: 'weeks', amount: 0},
-    {unit: 'months', amount: 0},
-    {unit: 'hours', amount: 0},
-    {unit: 'minutes', amount: 0},
-    {unit: 'seconds', amount: 0}
-  ];
-
   private timers : Timer[] = [];
+  private countdown : Countdown;
 
   private globals = {
     minDate: moment([moment().year() - 100]).toObject().years,
@@ -33,23 +18,8 @@ export class DataModel {
   /**
   *   Get a timer stub.
   **/
-  getDefaultTimer() : Timer {
-    let timer : Timer = <any>{};
-    Object.assign(timer, this.defaultTimer); // copy by value
-
-    // pseudo-random id
-    timer.id = Math.floor(Math.random() * 1000000);
-    // now
-    timer.datetime = moment().format();
-
-    return timer;
-  }
-
-  /**
-  *   Get a countdown stub.
-  **/
-  getDefaultCountdownObjArr() : CountdownObj[] {
-    return JSON.parse(JSON.stringify(this.defaultCountdownObjArr)); // deep copy
+  getNewTimer() : Timer {
+    return new Timer();
   }
 
   /**
@@ -113,9 +83,8 @@ export class DataModel {
   *   @params utcStr: UTC string with time to count down since or until
   *   @returns countdownObj: type is defined in timer.d.ts
   **/
-  getCountdownObj(utcStr : string) : CountdownObj[] {
-    let countdownObj : CountdownObj[] = this.getDefaultCountdownObjArr();
-    return countdownObj;
+  getCountdownObj(utcStr : string) : Countdown {
+    return new Countdown(utcStr);
   }
 
 }

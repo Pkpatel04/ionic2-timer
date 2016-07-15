@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Modal } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
 import { DataModel } from '../../providers/data-model/data-model';
-import { Timer } from '../../interfaces/timer';
+import { Timer } from '../../types/timer';
 import * as moment from 'moment';
 
 @Component({
@@ -19,7 +19,7 @@ export class TimersPage {
   /**
   *   @param timer: the timer to edit. By default it is a timer stub with a unique id.
   **/
-  openSettings(timer: Timer = this.dataModel.getDefaultTimer()) {
+  openSettings(timer: Timer = this.dataModel.getNewTimer()) {
     let timerCopy = Object.assign({}, timer);
     let modal = Modal.create(SettingsPage, {timer: timerCopy});
 
